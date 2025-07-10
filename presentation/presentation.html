@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical AI with Gemini CLI | Workshop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="animated-background"></div>
+    <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+    </div>
+
+    <main id="presentation-container">
+        
+        <!-- Slide 1: Title -->
+        <section id="slide-1" class="slide">
+            <h1>Practical AI with Gemini CLI</h1>
+            <h2>A Hands-On Workshop</h2>
+            <p class="author">Created by Gemini CLI</p>
+        </section>
+
+        <!-- Slide 2: History Intro -->
+        <section id="slide-2" class="slide">
+            <h2>The Breakneck Pace of AI</h2>
+            <p>To understand the tools we have today, we need to look back at the rapid evolution just this year.</p>
+        </section>
+
+        <!-- Slide 3: Combined History -->
+        <section id="slide-3" class="slide">
+            <h3>My Experience with AI</h3>
+            <ul>
+                <li><strong>May 28, 2025: The Game Changer.</strong> DeepSeek releases **DeepSeek-R1**. For the first time, a top-tier model that could challenge the major players was available to be run locally, opening the door for deep, hands-on learning.</li>
+                <li><strong>June 2025: The Free Powerhouse.</strong> **Gemini 2.5** is released for free. When paired with tools like `cline`, it proves incredibly powerful for complex, agentic tasks.</li>
+                <li><strong>Late June 2025: The Usability Leap.</strong> **Claude 3.7** arrives. Its major advantage isn't just power, but ease of use, thanks to the **Model Context Protocol (MCP)** and its incredibly efficient file searching.</li>
+                <li><strong>July 2025: The CLI Showdown.</strong> The release of the **Claude Code CLI** sets a new standard. Now, **Gemini has released its own CLI** to compete, which is what brings us here today.</li>
+            </ul>
+        </section>
+
+        <!-- Slide 4: Core Concepts Intro -->
+        <section id="slide-4" class="slide">
+            <h2>Core Concepts: What's Under the Hood?</h2>
+            <p>Let's demystify the key ideas that make this all work.</p>
+        </section>
+
+        <!-- Slide 5: Combined Concepts 1 -->
+        <section id="slide-5" class="slide">
+            <h3>The Transformer Architecture: Engine & Focus</h3>
+            <p>The **Transformer** is the engine of modern AI. Unlike older models that read word-by-word, it processes entire sentences at once. The breakthrough that makes this possible is the **Attention Mechanism**.</p>
+            <p class="story"><strong>Analogy: The Open-Book Exam.</strong> You don't re-read a whole book for one question. You scan for keywords, "paying attention" to relevant parts. The Attention mechanism lets the AI weigh the importance of different words, giving it focus.</p>
+        </section>
+
+        <!-- Slide 6: Combined Concepts 2 -->
+        <section id="slide-6" class="slide">
+            <h3>AI's Quirks: Creativity & Amnesia</h3>
+            <p>An AI's behavior is shaped by two key concepts: **Non-Determinism** (it makes creative, probabilistic guesses, not rigid calculations) and its **Context Window** (its short-term memory).</p>
+            <p class="story"><strong>Analogy: A Creative Intern with Amnesia.</strong> The AI can come up with brilliant, unexpected solutions (creativity), but it only remembers what's on the "whiteboard" of the current conversation. If information scrolls off, it's forgotten (amnesia).</p>
+        </section>
+
+        <!-- Slide 7: Unseen Costs -->
+        <section id="slide-7" class="slide">
+            <h3>The Unseen Costs of AI</h3>
+            <ul>
+                <li>A single AI query can use <strong>10-100x more electricity</strong> than a Google search.</li>
+                <li>Training one large model can equal the <strong>lifetime emissions of five cars</strong>.</li>
+                <li>In 2022, Google's data centers consumed over <strong>15 billion liters of water</strong> for cooling.</li>
+            </ul>
+            <p class="story">This isn't to say AI is bad, but we must be mindful. AI is also a tool being used to design more energy-efficient systems.</p>
+        </section>
+        
+        <!-- Slide 8: Setup Intro -->
+        <section id="slide-8" class="slide">
+            <h2>Installation & Setup</h2>
+            <p>Let's get our hands dirty and prepare our environment.</p>
+        </section>
+
+        <!-- Slide 9: WSL & Node Setup -->
+        <section id="slide-9" class="slide">
+            <h3>Setup Part 1: The Foundation (WSL & Node)</h3>
+            <p>First, we need to install the Windows Subsystem for Linux and Node.js.</p>
+            <pre><code>
+# 1. Install WSL from PowerShell or CMD (as Admin)
+# This command installs the WSL subsystem and a default Ubuntu distribution.
+wsl --install
+
+# 2. Launch WSL and install NVM (Node Version Manager)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+# 3. Reload the shell (exit and re-launch) and install Node.js
+nvm install --lts
+            </code></pre>
+        </section>
+
+        <!-- Slide 10: Git & Project Setup -->
+        <section id="slide-10" class="slide">
+            <h3>Setup Part 2: The Project (Git & Gemini)</h3>
+            <p>Now, let's install Git, the Gemini CLI, and get the workshop files.</p>
+            <pre><code>
+# 1. Install Git in your WSL terminal
+sudo apt update && sudo apt install git -y
+
+# 2. Install the Gemini CLI globally
+npm install -g @google/gemini-cli
+
+# 3. Set your API Key
+# Get your key from Google AI Studio and set it as an environment variable
+export GEMINI_API_KEY="YOUR_API_KEY_HERE"
+
+# 4. Clone the workshop repository
+git clone https://github.com/ross-futuri/gemini-cli-workshop.git
+cd gemini-cli-workshop
+
+# 5. Pre-flight Check!
+node -v && gemini --version && ls
+            </code></pre>
+        </section>
+
+        <!-- Slide 11: Project Intro -->
+        <section id="slide-11" class="slide">
+            <h2>Project: Historical Weather Data Explorer</h2>
+            <p>We will build a simple web app to explore weather data, using the AI for both backend and frontend code.</p>
+        </section>
+
+        <!-- Slide 12: The Prompt-Driven Workflow -->
+        <section id="slide-12" class="slide">
+            <h3>The Prompt-Driven Workflow</h3>
+            <p>A successful project follows an iterative, collaborative process with the AI.</p>
+            <ul>
+                <li><strong>1. Review the Plan:</strong> Start with a clear goal. We'll examine the initial prompt that outlines our web application.</li>
+                <li><strong>2. Refine with AI:</strong> Collaborate with the AI to improve the plan. A good conversation can clarify requirements and prevent mistakes.</li>
+                <li><strong>3. Supervise Implementation:</strong> Ask the AI to build the application, requesting it to mark its progress so you can follow along.</li>
+                <li><strong>4. Review and Test:</strong> Once the code is written, it's your turn. Run the app, test its functionality, and verify the results.</li>
+            </ul>
+            <p class="story">This human-in-the-loop process ensures you remain in control while leveraging the AI's speed.</p>
+        </section>
+
+        <!-- Slide 13: Combined Best Practices -->
+        <section id="slide-13" class="slide">
+            <h3>Working with AI: Rules of Engagement</h3>
+            <ul>
+                <li>
+                    <strong>Use Version Control Relentlessly.</strong> `git commit` is your best safety net.
+                    <p class="story">War Story: To fix minor linting issues, an AI wrote a script that destroyed the codebase. I recovered with Git but lost an hour of work.</p>
+                </li>
+                <li><strong>Plan in Markdown.</strong> A detailed prompt or plan is your source of truth to keep the AI on track.</li>
+                <li><strong>Maintain a Consistent Environment.</strong> WSL can have permission issues; run tests and static analysis in it to match the AI's environment.</li>
+                <li>
+                    <strong>You Are the Developer.</strong> The AI is a partner, not a magician. You must guide and verify its work.
+                    <p class="story">War Story: An AI stopped using its tools but insisted everything was working. I had to restart it to get it to see its own failure.</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Slide 14: On the Horizon -->
+        <section id="slide-14" class="slide">
+            <h2>On the Horizon: The AI Teammate</h2>
+            <p>The goal is moving from a simple 'assistant' to a true AI 'teammate'.</p>
+        </section>
+
+        <!-- Slide 15: The Future -->
+        <section id="slide-15" class="slide">
+            <h3>What's Next?</h3>
+            <ul>
+                <li><strong>Multi-Agent Systems:</strong> A manager AI delegating tasks to specialized AIs.</li>
+                <li><strong>True Multimodality (Sketch-to-Code):</strong> Drawing a wireframe and having the AI generate the code.</li>
+                <li><strong>Full SDLC Integration:</strong> AI assisting in requirements, architecture, testing, and deployment.</li>
+                <li><strong>Autonomous Maintenance:</strong> AI that can find, fix, and deploy patches for bugs on its own.</li>
+            </ul>
+        </section>
+
+        <!-- Slide 16: Thank you -->
+        <section id="slide-16" class="slide">
+            <h1>Thank You</h1>
+            <h2>Q & A</h2>
+        </section>
+
+    </main>
+
+    <div class="navigation">
+        <button id="back-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="next-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
