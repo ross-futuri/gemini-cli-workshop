@@ -1,170 +1,165 @@
 # Workshop Lesson Plan: Practical AI with Gemini CLI
 
-## 1. The Breakneck Pace of AI: A 2025 Story
+## 1. Introduction: The New Landscape of Development
 
-**Objective:** To understand the rapid, recent evolution of generative AI that has led to the powerful tools we have today. The world of AI moves incredibly fast, and the first half of 2025 was no exception.
+**Objective:** To set the stage by explaining how AI functions as a new type of tool in the developer's toolkit.
 
-### Q1 2025: The Revolution Goes Local & A Giant Awakens
-
-The year kicked off with a major shift: the release of "o3" and the widespread adoption of tools like **Ollama**. For the first time, running powerful models on our own local machines became not just possible, but practical. This was a huge step for developers wanting to learn and experiment without relying on cloud services.
-
-Shortly after, **Gemini 2.5** was released to the public, and for a few weeks, it was completely free. This was a game-changer. Its capabilities were immense, but it also highlighted the raw, untamed nature of early agentic AI.
-
-> **Story from the trenches:** *I decided to test its agentic capabilities. I gave it a complex task, went to have dinner, and came back a few hours later. I discovered it had gotten stuck in a repetitive loop just a few minutes in and had spent the entire time spinning my CPU fan to its limit, wasting electricity. A powerful lesson in the need for human oversight!*
-
-### Q2 2025: A New Challenger and the Desktop Bridge
-
-The market responded quickly. **Claude 3.7**, with its Sonnet and Opus models, emerged as a powerful competitor. But the real innovation was the **Claude Desktop app** combined with the **Model Context Protocol (MCP)**.
-
-This was the moment the AI assistant broke out of the browser tab. MCP acted as a bridge, allowing the AI to securely interact with our local files and tools. The workflow of copying and pasting code was beginning to be replaced by a true, integrated partnership.
-
-### Q3 2025: Affordability and the Command Line
-
-As the models matured, they also became more accessible. **Claude Code** became affordable for individual developers, making it a viable part of a daily workflow.
-
-This brings us to today and the **Gemini CLI**. This represents the next logical step in our journey: moving the AI interaction directly into the terminal, the native environment for so many developers. While some say it's not as powerful as other models, its direct integration into the command line offers a unique and efficient workflow, which we are here to explore.
+**Talking Points:**
+-   "AI has fundamentally changed my job. As a developer, I now have a tool that can generate code in any language. It's like having a universal translator and a junior programmer for every tech stack rolled into one. But like any tool, it needs to be directed."
+-   "As an architect, my role hasn't changed much. I was already focused on the bigger picture: patterns, high-level design, and organizing tasks. AI has become a powerful instrument for implementation, but the architectural vision remains a human task."
+-   "Today is about learning how to manage this new tool. Each AI has its own quirks and failure modes, and the rapid pace of change means these are constantly shifting. Learning to manage the tool and adapt to its changes is the key skill."
 
 ---
 
-## 2. Core Concepts: What's Under the Hood?
+## 2. Workshop Goals
+
+**Objective:** To clearly state what attendees will learn and be able to do by the end of the session.
+
+-   **Understand the Landscape:** Get a realistic overview of how AI tools fit into a modern development workflow.
+-   **Learn the "Why":** Grasp the core concepts that make these tools work and the common pitfalls to avoid.
+-   **Develop Practical Skills:** Learn repeatable, effective workflows for using the Gemini CLI for real-world tasks.
+-   **Build Confidence:** Leave with the ability to start using these tools on your own projects immediately.
+
+---
+
+## 3. The Rapid Pace of AI Development: A 2025 Timeline
+
+**Objective:** To review the rapid, recent evolution of generative AI to understand the tools available today.
+
+-   **The Pace of Change:** "Never pay for a year of an AI service. The field is changing so fast that a model that seems useful today might be superseded in three months. Stick to monthly subscriptions."
+
+### AI Model Comparison
+-   Instead of a static table, we'll use live resources. Different leaderboards track different types of models.
+-   **For Open-Source Models:** The **Hugging Face Open LLM Leaderboard** is an excellent, up-to-date site for tracking and comparing the performance of various open-source models.
+    -   **Link:** [https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard)
+-   **For Commercial Models:** The **LMSYS Chatbot Arena Leaderboard** is a great resource that ranks models based on anonymous, randomized battles and human-voted preferences.
+    -   **Link:** [https://chat.lmsys.org/?leaderboard](https://chat.lmsys.org/?leaderboard)
+
+---
+
+## 4. Core Concepts: How It Works
 
 **Objective:** To demystify the core concepts that make generative AI work, using analogies to build an intuitive understanding.
 
 ### Transformer Models: The Engine of Modern AI
-
-At the heart of models like Gemini and Claude is the **Transformer architecture**. Before Transformers, models processed text word-by-word in a sequence, which was slow and made it hard to capture long-range relationships. The Transformer was revolutionary because it processes all the words in a sentence at the same time.
-
--   **Analogy:** Think of it like reading a sentence. An old model would read it one word at a time: "The... cat... sat... on... the... mat." A Transformer reads the *entire sentence at once*, which allows it to build a much richer understanding of how all the words relate to each other from the very beginning.
-
-This parallel processing is what makes today's large language models so powerful and efficient.
+At the heart of models like Gemini is the **Transformer architecture**. It processes all the words in a sentence at the same time, which allows it to build a much richer understanding of how words relate to each other.
 
 ### Attention: The AI's "Focus" Mechanism
+This is the breakthrough that made Transformers possible. **Attention** is a mechanism that allows the model to weigh the importance of different words in the input when producing an output. It's how the AI "pays attention" to the most relevant parts of your prompt.
+-   **Further Reading:** For a great visual explanation, see "[The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)" by Jay Alammar.
 
-This is the breakthrough that made Transformers possible. If you process all the words at once, how do you know which ones are important? **Attention** is the answer. It's a mechanism that allows the model to weigh the importance of different words in the input when producing an output.
-
--   **Analogy: The Open-Book Exam.** Imagine you're taking an open-book exam. You're asked a question about a specific character in a novel. You don't re-read the entire book. Instead, you scan the text, "paying attention" to passages where that character's name appears. The Attention mechanism works in a similar way. For each word it generates, it "looks back" at the input text and decides which words are most relevant to what it's about to say.
-
-This is why an AI can answer a specific question about a large block of text or why the most recent messages in your chat have the biggest influence on its next response.
-
-### Non-Determinism: The Source of Creativity and Chaos
-
-Why do you get a slightly different answer every time you ask the AI the same question? This is because the model is **non-deterministic**. It's not following a rigid set of "if-then" rules like traditional software. Instead, it's making a series of probabilistic guesses.
-
--   **Analogy: The Weather Forecast.** A weather forecast might say there's an 80% chance of rain. It doesn't know for sure; it's making a prediction based on patterns. When an AI writes text, it's constantly predicting the next most likely word. But it doesn't always pick the #1 most probable word. It might pick #2 or #3 to make the text more interesting and less robotic.
-
-This randomness is a feature, not a bug. It's the source of the AI's creativity. However, it's also why the AI can sometimes make mistakes or "hallucinate" information—it's just trying to predict the next most plausible word, not stating a known fact.
-
-### Context is King: The AI's Short-Term Memory
-
-The AI doesn't have a persistent memory or consciousness. It only knows what's in its **context window**. This is the amount of text—including your prompts and its own responses—that it can "see" at any given moment.
-
--   **Analogy: A Whiteboard.** Think of the context window as a whiteboard. Everything you've discussed in the current conversation is written on it. As the conversation gets longer, the whiteboard fills up. Eventually, to write something new, you have to erase the oldest information.
-
-This is the single most important concept for working effectively with an AI. If the AI seems to "forget" something you told it earlier, it's because that information has been pushed out of its context window. This is why it can feel like you're pair programming with an expert who has severe short-term memory loss, and why providing clear, concise context is so crucial.
+### Non-Determinism & The Context Window
+The model's behavior is shaped by two key concepts:
+-   **Non-Determinism:** It makes creative, probabilistic guesses, which is the source of its creativity but also its unpredictability.
+-   **The Context Window:** This is the model's short-term memory. It only knows what's in the current conversation. If information scrolls "out of view," it's forgotten. This is the most critical concept to manage when working with an AI.
+-   **Further Reading:** For a good overview, see IBM's article, "[What is a context window?](https://www.ibm.com/topics/context-window)".
 
 ---
 
-## 3. The Unseen Costs of AI
+## 5. AI Workflows: From Assistant to Agent
 
-**Objective:** To understand the significant environmental and resource costs associated with large-scale AI.
+**Objective:** Understand the different ways of working with AI and their respective trade-offs.
 
-While AI offers incredible capabilities, it's crucial to acknowledge its significant environmental footprint. The servers that run these models are housed in massive data centers that have a voracious appetite for resources.
+### The Core Pattern: Human-in-the-Loop
+This is the most reliable and effective pattern. It's a simple three-phase process:
+1.  **Planning:** The human defines the goal. Create markdown documents of your plans so if the AI fails or you run out of context you don’t need to redo the plan.
+2.  **Implementation:** The AI generates the code.
+3.  **Review & Test:** The human verifies the output.
 
--   **The Energy Elephant:** AI is a major driver of global energy consumption.
-    -   **Massive Power Draw:** Data centers are projected to more than double their electricity consumption by 2030, with AI being a primary cause.
-    -   **Per-Query Cost:** A single query to a generative AI model can use **10 to 100 times more electricity** than a simple Google search.
-    -   **Training Footprint:** Training a single large AI model can have a carbon footprint equivalent to the **entire lifetime emissions of five cars**.
-
--   **The Water Footprint:** It's not just about electricity.
-    -   **Cooling Demand:** Data centers require vast amounts of water for cooling their servers.
-    -   **Staggering Numbers:** In 2022, Google's data centers alone consumed over **15 billion liters of water**.
-
-This isn't to say AI is inherently bad. As developers and users, we must be mindful of these costs and support the industry's push towards more efficient hardware and renewable energy. It's also worth noting that AI itself is a tool being used to design more energy-efficient systems and optimize power grids.
+### Types of AI Interaction
+-   **Copy/Paste (UI-based):** The most basic workflow. You prompt in a web UI and copy the code into your editor.
+-   **Integrated (CLI / MCP):** The AI has access to your file system. This is more efficient but requires more trust and careful oversight.
+-   **Agentic (Unpredictable):** You give the AI a high-level goal and let it run autonomously.
+    -   "I have been using this for low-stakes, low-context tasks, like creating basic UIs, while I work on other things. I just check on it every 15 minutes or so."
+    -   "Frankly, the output is often not very useful considering the amount of time it spends working, but it's a workflow to be aware of."
 
 ---
 
-## 4. Installation and Setup
+## 6. Pitfalls & Best Practices
+
+**Objective:** Learn from common failure modes to develop robust habits for working with AI.
+
+### Pitfalls: Common Failure Modes
+-   **Short Attention Span / Context Amnesia:**
+    -   "It’s like pair programming with a fast but forgetful coder. It can test your patience."
+    -   Each time the context is reset, you are working with a *new* instance that has no memory of the previous conversation.
+-   **Erratic Behavior & Unintended Consequences:**
+    -   > **War Story 1:** "To fix some minor linting issues, it created a script that destroyed all the code. I used git to recover but lost about an hour of work. It took a simple instruction and executed it in the most destructive way possible."
+    -   > **War Story 2:** "Recently, an AI stopped using its file system tools but insisted everything was working perfectly. I had to restart the entire session to make it recognize its own failure. It cannot self-diagnose."
+-   **The "Hidden Prompt":**
+    -   "There are hidden instructions that influence the AI's behavior. For a brief time, an AI I was using went haywire and started showing me its system prompts. It was constantly being told to write 'backwards-compatible' code, even though I kept telling it not to. This taught me that you have to be persistent with your own instructions to override these hidden defaults."
+
+### Best Practices: Your Safety Net
+-   **Use Version Control Relentlessly:** The AI will make mistakes. `git commit` is your only real safety net.
+    -   "On the plus side, the AI is very good at searching git history. You can ask it to find when a specific piece of code was introduced, and it can usually pinpoint the commit for you."
+-   **Maintain a Clean Workspace:** The AI can get confused by duplicate or old files. A clean directory and frequent check-ins with `git status` help prevent mistakes.
+-   **Remind It Constantly:** You have to actively manage the AI's focus. "Even if you tell it at the start you are just planning, it might eventually start coding. Constantly dropping reminders that 'we are still in the planning phase' will help it stay on task."
+-   **Use WSL for Consistency:** "Working in WSL on Windows can cause permissions issues. I run my integration tests and static code analyzers *inside* WSL to keep my environment consistent with the AI's."
+
+---
+
+## 7. Installation and Setup
 
 **Objective:** Ensure everyone is ready to start coding with the Gemini CLI.
 
-1.  **Install System Dependencies:**
-    -   **WSL:** `wsl --install -d Ubuntu --name Gemini-cli`
-    -   **NVM:** After launching WSL (`wsl -d Gemini-cli`), run `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash`
-    -   **Reload Shell:** `exit` and relaunch WSL.
-    -   **Node.js:** `nvm install --lts`
-
-2.  **Install Gemini CLI:**
+1.  **Install WSL (Windows Subsystem for Linux):**
+    -   `wsl --install -d Ubuntu --name Gemini-cli`
+2.  **Launch WSL:**
+    -   `wsl -d Gemini-cli`
+3.  **Install NVM (Node Version Manager):**
+    -   `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash`
+4.  **Reload Shell & Install Node:**
+    -   Exit and relaunch WSL.
+    -   `nvm install --lts`
+5.  **Install Gemini CLI:**
     -   `npm install -g @google/gemini-cli`
-
-3.  **Get Workshop Files:**
-    -   `git clone https://github.com/gemini-workshop/gemini-cli-projects.git`
-    -   `cd gemini-cli-projects`
-
-4.  **Pre-flight Check:**
-    -   Before we start, let's verify our setup. Run these commands:
-    -   `node -v` (should show a recent version like v22.x.x)
-    -   `gemini --version` (should show the installed CLI version)
-    -   `ls` (should show the `historical_weather_explorer` directory)
-
----
-
-## 5. Project 1: Historical Weather Data Explorer
-
-**Objective:** We will build a simple web application that allows a user to fetch and view historical weather data for a specific location and date range. This project focuses on using the AI for API interaction and UI scaffolding.
-
-### Step 1: Use the Prompt
-
-We'll start by using the detailed prompt we've prepared.
-
-**Your task:**
-```
-cat historical_weather_explorer/prompt.md
-```
-Review the prompt and then feed it to the Gemini CLI to generate the initial code.
-
-### Step 2: Running the Application
-
-Once the AI has generated the code, we'll run the app to see our creation.
-1.  Install Flask and Pandas: `pip install Flask pandas requests`
-2.  Run the server: `python app.py`
-3.  Open a web browser and navigate to `http://127.0.0.1:5000`.
-
-> **Presenter's Note:** For a live workshop, it's wise to have a safety net. Have a separate branch in your git repository (e.g., `solution-1`) with the final, working code. If the live demo produces an error, you can quickly `git checkout solution-1` to continue the lesson.
+6.  **Set Your API Key:**
+    -   Get your key from Google AI Studio.
+    -   `export GEMINI_API_KEY="YOUR_API_KEY_HERE"`
+7.  **Install Git & Get Workshop Files:**
+    -   `sudo apt update && sudo apt install git -y`
+    -   `git clone https://github.com/ross-futuri/gemini-cli-workshop.git`
+    -   `cd gemini-cli-workshop`
+8.  **Pre-flight Check:**
+    -   `node -v` (e.g., v22.17.0)
+    -   `gemini --version`
+    -   `ls`
 
 ---
 
-## 6. AI Workflows & Pitfalls
+## 8. Let's Work with Gemini!
 
-**Objective:** Understand different ways of working with AI and the common challenges to watch out for.
+**Objective:** Do some small example projects to see the workflow in action.
 
--   **Human-in-the-Loop:** This is the workflow we're using today, where you guide the AI as a partner.
--   **Agentic Workflows (The Risky Frontier):** This is where you give the AI full autonomy to achieve a goal. It's powerful but can be unpredictable.
-    > **Story from the trenches:** *One time I asked an agent to run a linter and fix some style issues. Instead of just changing the code, it wrote a script to modify the files in bulk. It got the script wrong and corrupted a huge part of the codebase. This highlights the need for careful oversight!*
--   **Pitfall: Short Attention Span:** The AI's context window is its entire memory. It's like pair programming with an impossibly fast coder who unfortunately has amnesia.
--   **Pitfall: The "Hidden Agent":** There are often hidden, system-level instructions that guide the AI's behavior.
-    > **Story from the trenches:** *For a brief time, an AI I was using went haywire and started showing me its system prompts. It was constantly being told to write "backwards-compatible" code, even though I kept telling it not to. It was a revealing moment that taught me to be persistent and clear with my reminders to keep the AI on task.*
+-   Historical Weather Data Explorer
+-   (Add another small project idea here)
 
 ---
 
-## 7. Best Practices
+## 9. Advanced Techniques
 
--   **Version Control is Non-Negotiable:** AI can and will make mistakes. `git commit` at stable checkpoints is your best safety net. Luckily, AI is also great at reading `git log` to help you find where a weird change was introduced.
--   **Create Markdown Plans:** Before you start coding, create a markdown file with your plan (like the `prompt.md` we used). If the AI gets lost or the context resets, you have a source of truth to get back on track.
--   **Keep Your Workspace Clean:** AI can get confused by duplicate or old files. A clean directory and frequent check-ins with `git status` help prevent mistakes.
--   **The AI is a Partner, Not a Magician:** You are still the developer. You must guide the AI, check its work, and understand the code it produces.
+**Objective:** Explore more sophisticated applications of AI tools in a development workflow.
+
+-   **AI-Powered Code Investigation:** Use the AI as an analytical tool. Instead of just writing code, have it analyze it.
+    -   **Example:** Pipe the output of `git log --patch` or `git blame` for a specific file into the AI and ask, "Based on this history, what was the original intent of the `calculate_interest` function?" or "When was the logic for handling leap years removed?"
+-   **Automated Static Analysis & Refactoring:** Go beyond just running a linter.
+    -   **Workflow:**
+        1.  Run your static code analyzer (linter, type-checker, etc.).
+        2.  Feed the list of errors and warnings to the AI.
+        3.  Instruct it: "Here are 15 linting errors in `main.py`. Please fix them according to the project's style guide."
+-   **Advanced MCP Usage (Task Chaining):** Use the AI to orchestrate multi-step tasks that involve several tools.
+    -   **Example:** "Read the `api_spec.json`, then generate a basic Python client for it, and finally, write a simple `test_client.py` that calls the `/health` endpoint." This chains reading, code generation, and test creation in one prompt.
+-   **Infrastructure as Code (IaC) Generation:** Use the AI to scaffold configuration and deployment files.
+    -   **Example:** "I have a Python Flask application in `app.py` that uses Redis. Write me a `Dockerfile` and a `docker-compose.yml` to run them together for local development."
 
 ---
 
-## 8. On the Horizon: The AI Teammate
+## 10. Future Directions
 
-The field continues to evolve at a dizzying pace. The goal is to move from a simple "assistant" to a true AI "teammate." Here are a few things to watch for that will shape the future of AI-assisted development:
+### Things I Haven’t Tried Yet
+-   Sub-agents
+-   In-depth MCP work
+-   Custom reminder commands
 
--   **Multi-Agent Systems:** Your primary AI assistant will act as a "manager," delegating tasks to a team of specialized AIs. It might pass a UI problem to a "design expert" agent or a complex database migration to a "data architect" agent, then integrate their work.
-
--   **True Multimodality (Sketch-to-Code):** The interaction will move beyond text. Soon, you'll be able to draw a wireframe on a tablet, and an AI will interpret that visual design to generate the functional code, bridging the gap between visual intent and implementation.
-
--   **Full Software Development Lifecycle (SDLC) Integration:** The AI's role will expand beyond just writing code. It will become a partner in the entire development process, from helping to refine project requirements and suggesting system architecture to generating complex test suites and even assisting with deployment and monitoring.
-
--   **Autonomous Maintenance & Self-Healing Code:** This is the most forward-looking concept. Imagine an AI that can monitor a live application, detect a bug from error logs, locate the faulty code, write a patch, test it, and deploy the fix, all with minimal human oversight.
-
--   **Hyper-Personalization:** Models will be deeply and securely trained on your organization's private codebases. This will create an AI that is not just a coding expert, but an expert on *your* specific systems, ready to answer complex, context-aware questions about your proprietary logic.
+### The Energy Cost of AI
+-   (This is already covered well in the existing presentation, can be merged).

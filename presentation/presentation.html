@@ -19,47 +19,86 @@
         
         <!-- Slide 1: Title -->
         <section id="slide-1" class="slide">
+            <!-- 
+                Presenter Notes:
+                - "AI is a new tool in our toolkit. Like any tool, it needs to be directed."
+                - "My role as an architect hasn't changed. I define the vision; the AI is an instrument for implementation."
+                - "Today is about learning to manage this tool. Adapting to its quirks and changes is the key skill."
+            -->
             <h1>Practical AI with Gemini CLI</h1>
             <h2>A Hands-On Workshop</h2>
-            <p class="author">Created by Gemini CLI</p>
+            <p class="author">Prepared by Gemini CLI</p>
         </section>
 
-        <!-- Slide 2: History Intro -->
+        <!-- Slide 2: Workshop Goals -->
         <section id="slide-2" class="slide">
-            <h2>The Breakneck Pace of AI</h2>
-            <p>To understand the tools we have today, we need to look back at the rapid evolution just this year.</p>
-        </section>
-
-        <!-- Slide 3: Combined History -->
-        <section id="slide-3" class="slide">
-            <h3>My Experience with AI</h3>
+            <h3>Workshop Goals</h3>
             <ul>
-                <li><strong>May 28, 2025: The Game Changer.</strong> DeepSeek releases **DeepSeek-R1**. For the first time, a top-tier model that could challenge the major players was available to be run locally, opening the door for deep, hands-on learning.</li>
-                <li><strong>June 2025: The Free Powerhouse.</strong> **Gemini 2.5** is released for free. When paired with tools like `cline`, it proves incredibly powerful for complex, agentic tasks.</li>
-                <li><strong>Late June 2025: The Usability Leap.</strong> **Claude 3.7** arrives. Its major advantage isn't just power, but ease of use, thanks to the **Model Context Protocol (MCP)** and its incredibly efficient file searching.</li>
-                <li><strong>July 2025: The CLI Showdown.</strong> The release of the **Claude Code CLI** sets a new standard. Now, **Gemini has released its own CLI** to compete, which is what brings us here today.</li>
+                <li>Understand how AI tools fit into a modern development workflow.</li>
+                <li>Learn the core concepts and common pitfalls of working with AI.</li>
+                <li>Develop practical, repeatable workflows for using the Gemini CLI.</li>
+                <li>Leave with the confidence to start using these tools in your own projects.</li>
             </ul>
         </section>
 
-        <!-- Slide 4: Core Concepts Intro -->
+        <!-- Slide 3: Pace of Development -->
+        <section id="slide-3" class="slide">
+            <h2>The Rapid Pace of AI Development</h2>
+            <p>To understand the tools we have today, we need to look at the rapid evolution just this year.</p>
+            <p class="story"><strong>Pro Tip:</strong> Never pay for a year-long AI subscription. The field is changing so fast that today's model might be superseded in three months.</p>
+        </section>
+
+        <!-- Slide 3: Recent Timeline -->
+        <section id="slide-3" class="slide">
+            <h3>A Timeline of Recent Developments</h3>
+            <ul>
+                <li><strong>May 2025: A Shift in Access.</strong> DeepSeek releases a model that can be run locally with tools like Ollama, enabling offline experimentation.</li>
+                <li><strong>June 2025: Public Previews.</strong> **Gemini 2.5** is released for free, showing significant capabilities but also unpredictable behavior, like getting stuck in loops.</li>
+                <li><strong>Late June 2025: New Integrations.</strong> **Claude 3.7** arrives with the Model Context Protocol (MCP), allowing the AI to interact with local files.</li>
+                <li><strong>July 2025: The Rise of CLIs.</strong> The **Gemini CLI** is released, moving the AI interface into the developer's native terminal environment.</li>
+            </ul>
+        </section>
+
+        <!-- Slide 4: AI Model Comparison -->
         <section id="slide-4" class="slide">
-            <h2>Core Concepts: What's Under the Hood?</h2>
+            <h3>Tracking AI Model Performance</h3>
+            <p>A static comparison table goes out of date instantly. It's better to use live leaderboards.</p>
+            <div class="link-grid">
+                <div class="link-item">
+                    <h4>Open-Source Models</h4>
+                    <p>The <strong>Hugging Face Leaderboard</strong> is great for tracking open-source model performance.</p>
+                    <p class="link-style"><a href="https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard" target="_blank">Open LLM Leaderboard</a></p>
+                </div>
+                <div class="link-item">
+                    <h4>Commercial Models</h4>
+                    <p>The <strong>LMSYS Chatbot Arena</strong> ranks models based on human preference in blind tests.</p>
+                    <p class="link-style"><a href="https://chat.lmsys.org/?leaderboard" target="_blank">Chatbot Arena Leaderboard</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: Core Concepts Intro -->
+        <section id="slide-5" class="slide">
+            <h2>Core Concepts: How It Works</h2>
             <p>Let's demystify the key ideas that make this all work.</p>
         </section>
 
-        <!-- Slide 5: Combined Concepts 1 -->
-        <section id="slide-5" class="slide">
-            <h3>The Transformer Architecture: Engine & Focus</h3>
-            <p>The **Transformer** is the engine of modern AI. Unlike older models that read word-by-word, it processes entire sentences at once. The breakthrough that makes this possible is the **Attention Mechanism**.</p>
-            <p class="story"><strong>Analogy: The Open-Book Exam.</strong> You don't re-read a whole book for one question. You scan for keywords, "paying attention" to relevant parts. The Attention mechanism lets the AI weigh the importance of different words, giving it focus.</p>
+        <!-- Slide 6: Combined Concepts 1 -->
+        <section id="slide-6" class="slide">
+            <h3>The Transformer & Attention</h3>
+            <p>The **Transformer** is the engine of modern AI. The breakthrough that makes it possible is the **Attention Mechanism**.</p>
+            <p class="story"><strong>Analogy: The Open-Book Exam.</strong> You don't re-read a whole book for one question. You scan for keywords, "paying attention" to relevant parts. Attention lets the AI weigh the importance of different words, giving it focus.</p>
+            <p class="link-style">Further Reading: <a href="https://jalammar.github.io/illustrated-transformer/" target="_blank">The Illustrated Transformer</a></p>
         </section>
 
-        <!-- Slide 6: Combined Concepts 2 -->
-        <section id="slide-6" class="slide">
-            <h3>AI's Quirks: Creativity & Amnesia</h3>
-            <p>An AI's behavior is shaped by two key concepts: **Non-Determinism** (it makes creative, probabilistic guesses, not rigid calculations) and its **Context Window** (its short-term memory).</p>
-            <p class="story"><strong>Analogy: A Creative Intern with Amnesia.</strong> The AI can come up with brilliant, unexpected solutions (creativity), but it only remembers what's on the "whiteboard" of the current conversation. If information scrolls off, it's forgotten (amnesia).</p>
+        <!-- Slide 7: Combined Concepts 2 -->
+        <section id="slide-7" class="slide">
+            <h3>Creativity & Context</h3>
+            <p>An AI's behavior is shaped by two key concepts: **Non-Determinism** (it makes creative, probabilistic guesses) and its **Context Window** (its short-term memory).</p>
+            <p class="story"><strong>The Context Window is the model's entire short-term memory.</strong> It's a set number of tokens the model can consider at one time. Information outside this window is forgotten, which is the most common source of errors.</p>
+            <p class="link-style">Further Reading: <a href="https://www.ibm.com/topics/context-window" target="_blank">What is a context window? (IBM)</a></p>
         </section>
+
 
         <!-- Slide 7: Unseen Costs -->
         <section id="slide-7" class="slide">
@@ -80,90 +119,121 @@
 
         <!-- Slide 9: WSL & Node Setup -->
         <section id="slide-9" class="slide">
-            <h3>Setup Part 1: The Foundation (WSL & Node)</h3>
-            <p>First, we need to install the Windows Subsystem for Linux and Node.js.</p>
+            <h3>Setup: The Foundation (WSL & Node)</h3>
+            <p>We need a consistent environment. Using the Windows Subsystem for Linux is key.</p>
             <pre><code>
-# 1. Install WSL from PowerShell or CMD (as Admin)
-# This command installs the WSL subsystem and a default Ubuntu distribution.
-wsl --install
+# 1. Install WSL and a specific Ubuntu distribution
+wsl --install -d Ubuntu --name Gemini-cli
 
-# 2. Launch WSL and install NVM (Node Version Manager)
+# 2. Launch our dedicated WSL environment
+wsl -d Gemini-cli
+
+# 3. Install NVM (Node Version Manager)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
-# 3. Reload the shell (exit and re-launch) and install Node.js
+# 4. Reload shell (exit & relaunch) and install Node.js
 nvm install --lts
             </code></pre>
         </section>
 
         <!-- Slide 10: Git & Project Setup -->
         <section id="slide-10" class="slide">
-            <h3>Setup Part 2: The Project (Git & Gemini)</h3>
-            <p>Now, let's install Git, the Gemini CLI, and get the workshop files.</p>
+            <h3>Setup: The Project (Gemini CLI)</h3>
+            <p>Now, let's install the CLI and set our API key.</p>
+            <pre><code>
+# 1. Install the Gemini CLI globally
+npm install -g @google/gemini-cli
+
+# 2. Set your API Key from Google AI Studio
+export GEMINI_API_KEY="YOUR_API_KEY_HERE"
+
+# 3. Pre-flight Check!
+node -v && gemini --version
+            </code></pre>
+        </section>
+
+        <!-- Slide 11: Git & Repo -->
+        <section id="slide-11" class="slide">
+            <h3>Setup: Get the Workshop Files</h3>
+            <p>Now let's install Git and clone the workshop repository.</p>
             <pre><code>
 # 1. Install Git in your WSL terminal
 sudo apt update && sudo apt install git -y
 
-# 2. Install the Gemini CLI globally
-npm install -g @google/gemini-cli
-
-# 3. Set your API Key
-# Get your key from Google AI Studio and set it as an environment variable
-export GEMINI_API_KEY="YOUR_API_KEY_HERE"
-
-# 4. Clone the workshop repository
+# 2. Clone the workshop repository
 git clone https://github.com/ross-futuri/gemini-cli-workshop.git
-cd gemini-cli-workshop
 
-# 5. Pre-flight Check!
-node -v && gemini --version && ls
+# 3. Navigate into the project directory
+cd gemini-cli-workshop
             </code></pre>
         </section>
 
-        <!-- Slide 11: Project Intro -->
-        <section id="slide-11" class="slide">
+        <!-- Slide 12: Project Intro -->
+        <section id="slide-12" class="slide">
             <h2>Project: Historical Weather Data Explorer</h2>
             <p>We will build a simple web app to explore weather data, using the AI for both backend and frontend code.</p>
         </section>
 
-        <!-- Slide 12: The Prompt-Driven Workflow -->
+        <!-- Slide 12: The AI Workflow -->
         <section id="slide-12" class="slide">
-            <h3>The Prompt-Driven Workflow</h3>
-            <p>A successful project follows an iterative, collaborative process with the AI.</p>
+            <h3>AI Workflows: From Assistant to Agent</h3>
             <ul>
-                <li><strong>1. Review the Plan:</strong> Start with a clear goal. We'll examine the initial prompt that outlines our web application.</li>
-                <li><strong>2. Refine with AI:</strong> Collaborate with the AI to improve the plan. A good conversation can clarify requirements and prevent mistakes.</li>
-                <li><strong>3. Supervise Implementation:</strong> Ask the AI to build the application, requesting it to mark its progress so you can follow along.</li>
-                <li><strong>4. Review and Test:</strong> Once the code is written, it's your turn. Run the app, test its functionality, and verify the results.</li>
+                <li><strong>Copy/Paste (UI-based):</strong> Basic prompting in a web UI and pasting the code over. Simple and contained.</li>
+                <li><strong>Integrated (CLI / MCP):</strong> The AI has access to your file system. More efficient, but requires careful oversight. <strong>(Today's Focus)</strong></li>
+                <li><strong>Agentic (Unpredictable):</strong> You give the AI a high-level goal and let it run. The results are often not worth the effort.</li>
             </ul>
-            <p class="story">This human-in-the-loop process ensures you remain in control while leveraging the AI's speed.</p>
+            <p class="story">The most reliable pattern is **Plan, Implement, Review.** We plan the work, the AI implements, and we verify.</p>
         </section>
 
-        <!-- Slide 13: Combined Best Practices -->
+        <!-- Slide 13: Pitfalls -->
         <section id="slide-13" class="slide">
-            <h3>Working with AI: Rules of Engagement</h3>
+            <h3>Pitfalls: Common Failure Modes</h3>
             <ul>
-                <li>
-                    <strong>Use Version Control Relentlessly.</strong> `git commit` is your best safety net.
-                    <p class="story">War Story: To fix minor linting issues, an AI wrote a script that destroyed the codebase. I recovered with Git but lost an hour of work.</p>
-                </li>
-                <li><strong>Plan in Markdown.</strong> A detailed prompt or plan is your source of truth to keep the AI on track.</li>
-                <li><strong>Maintain a Consistent Environment.</strong> WSL can have permission issues; run tests and static analysis in it to match the AI's environment.</li>
-                <li>
-                    <strong>You Are the Developer.</strong> The AI is a partner, not a magician. You must guide and verify its work.
-                    <p class="story">War Story: An AI stopped using its tools but insisted everything was working. I had to restart it to get it to see its own failure.</p>
-                </li>
+                <li><strong>Context Amnesia:</strong> It's like working with a fast but forgetful coder. It has no long-term memory.</li>
+                <li><strong>The "Hidden Prompt":</strong> Hidden system instructions can override yours, requiring you to be persistent.</li>
+            </ul>
+            <div class="story-grid">
+                <div class="story">
+                    <p><strong>War Story 1:</strong> "To fix minor linting issues, an AI wrote a script that destroyed the codebase. It took a simple task and found the most destructive solution."</p>
+                </div>
+                <div class="story">
+                    <p><strong>War Story 2:</strong> "An AI stopped using its tools but insisted everything was working. It can't self-diagnose, so I had to restart the session."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 14: Best Practices -->
+        <section id="slide-14" class="slide">
+            <h3>Best Practices: Your Safety Net</h3>
+            <ul>
+                <li><strong>Use Version Control Relentlessly.</strong> `git commit` is your only real safety net. The AI *can*, however, be useful for searching git history.</li>
+                <li><strong>Plan in Markdown.</strong> An external plan is your source of truth when the AI's context fails.</li>
+                <li><strong>Keep Your Workspace Clean.</strong> The AI can get confused by old or duplicate files. Use `git status` to track changes.</li>
+                <li><strong>Remind It Constantly.</strong> You have to actively manage the AI's focus to keep it from going off-task.</li>
+                <li><strong>Use a Consistent Environment.</strong> Run tests in WSL to match the AI's environment and avoid permission issues.</li>
             </ul>
         </section>
 
-        <!-- Slide 14: On the Horizon -->
-        <section id="slide-14" class="slide">
-            <h2>On the Horizon: The AI Teammate</h2>
-            <p>The goal is moving from a simple 'assistant' to a true AI 'teammate'.</p>
+        <!-- Slide 15: Advanced Techniques -->
+        <section id="slide-15" class="slide">
+            <h3>Advanced Techniques</h3>
+            <ul>
+                <li><strong>AI-Powered Code Investigation:</strong> Use the AI to analyze `git log` or `git blame` output to understand code history and intent.</li>
+                <li><strong>Automated Static Analysis:</strong> Feed linter or type-checker output to the AI and instruct it to fix the identified issues.</li>
+                <li><strong>Complex Task Chaining:</strong> Use a single prompt to orchestrate multi-step tasks, like reading a spec, generating a client, and writing a test.</li>
+                <li><strong>Infrastructure as Code Generation:</strong> Ask the AI to create `Dockerfile` or `docker-compose.yml` files for your application.</li>
+            </ul>
         </section>
 
-        <!-- Slide 15: The Future -->
-        <section id="slide-15" class="slide">
-            <h3>What's Next?</h3>
+        <!-- Slide 16: Future Directions -->
+        <section id="slide-16" class="slide">
+            <h2>Future Directions</h2>
+            <p>The goal is to make these tools more reliable and less prone to failure.</p>
+        </section>
+
+        <!-- Slide 17: What's Next? -->
+        <section id="slide-17" class="slide">
+            <h3>What's Being Worked On?</h3>
             <ul>
                 <li><strong>Multi-Agent Systems:</strong> A manager AI delegating tasks to specialized AIs.</li>
                 <li><strong>True Multimodality (Sketch-to-Code):</strong> Drawing a wireframe and having the AI generate the code.</li>
@@ -172,8 +242,8 @@ node -v && gemini --version && ls
             </ul>
         </section>
 
-        <!-- Slide 16: Thank you -->
-        <section id="slide-16" class="slide">
+        <!-- Slide 18: Thank you -->
+        <section id="slide-18" class="slide">
             <h1>Thank You</h1>
             <h2>Q & A</h2>
         </section>
